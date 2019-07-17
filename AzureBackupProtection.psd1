@@ -96,7 +96,7 @@
 			IconUri = ''
 			
 			# The web address of this module's project or support homepage.
-			ProjectUri = ''
+			ProjectUri = 'https://github.com/MARCO-K/AzureBackupProtection'
 			
 			# The web address of this module's license. Points to a page that's embeddable and linkable.
 			LicenseUri = 'http://www.gnu.org/licenses/gpl-3.0.en.html'
