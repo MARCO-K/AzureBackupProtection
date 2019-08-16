@@ -41,7 +41,7 @@
         [parameter(Mandatory,ValueFromPipeline)][string]$VM,
         [parameter(Mandatory,ValueFromPipeline)][string]$instance,
         [parameter(Mandatory,ValueFromPipeline)][string]$database,
-        [int]$daysback = 7
+        [parameter(Mandatory=$true)][ValidateRange(1,30)][Int]$daysback
     )
     begin {
 
@@ -99,5 +99,5 @@
         }
     }
 
-    end {$bckitems}
+    end {$bckitems | Select-Object @{Name='RecoveryServicesVault'; Expression={$RecoveryServicesVault}},@{Name='VM'; Expression={$VM}},ItemName,RecoveryPointType,RecoveryPointTime,RecoveryPointId,WorkloadType}
 }

@@ -11,7 +11,7 @@
 	RootModule = 'AzureBackupProtection.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '0.0.2'
+	ModuleVersion = '0.0.3'
 	
 	# ID used to uniquely identify this module
 	GUID = '1e34a65d-bf2b-44a0-b4bb-c8e6e6b0ec6e'
@@ -26,7 +26,7 @@
 	Copyright = '2019 Marco Kleinert'
 	
 	# Description of the functionality provided by this module
-	Description = 'This module provides extra functionality for SQL Server backups for Azure VM's.'
+	Description = 'This module provides extra functionality for SQL Server backups for Azure VMs.'
 	
 	# Minimum version of the Windows PowerShell engine required by this module
 	PowerShellVersion = '3.0'
@@ -65,16 +65,16 @@
 	NestedModules = @()
 	
 	# Functions to export from this module
-	FunctionsToExport = '*'
+	FunctionsToExport = "*"
 	
 	# Cmdlets to export from this module
-	CmdletsToExport = '*'
+	CmdletsToExport = "*"
 	
 	# Variables to export from this module
-	VariablesToExport = '*'
+	VariablesToExport = "*"
 	
 	# Aliases to export from this module
-	AliasesToExport = '*',
+	AliasesToExport = "*"
 	
 	
 	# List of all modules packaged with this module
