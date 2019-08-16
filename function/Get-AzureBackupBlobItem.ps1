@@ -13,6 +13,9 @@
 
             .PARAMETER StorageAccountName
             This parameter specifies the name of the StorageAccount.
+			
+			.PARAMETER blob
+            This parameter specifies the name of the blob container.
 
             .PARAMETER retentionDays
             The number of days to define the end of the time range.
@@ -41,6 +44,7 @@
     param(
         [parameter(Mandatory,ValueFromPipeline)][string]$ResourceGroupName,
         [parameter(Mandatory,ValueFromPipeline)][string]$StorageAccountName,
+        [parameter(Mandatory,ValueFromPipeline)][string]$blob,
         [parameter(Mandatory,ValueFromPipeline)][ValidateRange(1,99)][int]$RetentionDays,
         [parameter(Mandatory,ValueFromPipeline)][ValidateSet('all','full','log')][string]$backuptype,
         [string]$database = $null
@@ -70,10 +74,10 @@
         $key = $key[0]
 
         $Context = New-AzStorageContext -StorageAccountName $storageaccount.StorageAccountName -StorageAccountKey $key.Value
-        $container = Get-AzStorageContainer -Context $Context
+        $container = Get-AzStorageContainer -Context $Context -Name $blob
         Write-Verbose -Message ('Working with StorageContainer: ' + $container.Name)
         Write-Verbose -Message 'Retrieving blob items from container'
-        $blobs = Get-AzStorageBlob -Container $container.Name -Context $Context
+        $blobs = Get-AzStorageBlob -Container $container.name -Context $Context
     }
 
     process { 

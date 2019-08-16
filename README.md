@@ -39,10 +39,10 @@ The "Get-AzureBackupBlobItem" cmdlet retrieves the specified blob from a storage
 You can specify RetentionDays, backuptype and database name as filter.
 
 This will retrieve all blob items of the last 30 days for all backuptypes.
-`Get-AzureBackupBlobItem -ResourceGroupName Value -StorageAccountName Value -retentionDays 30 -backuptype 'all'`
+`Get-AzureBackupBlobItem -ResourceGroupName Value -StorageAccountName Value -blob blobname -retentionDays 30 -backuptype 'all'`
 
 This will retrieve all blob items of the last 30 days for all databases with Test at the begining of the nam.
-`Get-AzureBackupBlobItem -ResourceGroupName Value -StorageAccountName Value -retentionDays 30 -database 'Test'`
+`Get-AzureBackupBlobItem -ResourceGroupName Value -StorageAccountName Value -blob blobname -retentionDays 30 -database 'Test'`
 
 ### Get-AzureBackupItem
 The cmdlet Get-AzureBackupItem collects a list of items which protected by Azure backup. It also returns the protection status of the items.
@@ -60,8 +60,17 @@ Returns all unprotected items in a VM.
 
 `Get-AzureBackupItemUninitialized -ResourceGroupName Value -RecoveryServicesVault Value -VM Value`
 
+### Get-AzureBackupProtectionPolicy
+
+The function "Get-AzureBackupProtectionPolicy" will list all available backup policies for a RecoveryServicesVault:
+It will only show policies for MSSQL workload.
+
+Returns all unprotected items in a VM.
+
+`Get-AzureBackupProtectionPolicy -ResourceGroupName Value -RecoveryServicesVault Value`
+
 ### Get-AzureBackupRecoveryPoint
-The cmdlet Get-AzureBackupRecoveryPoint collects a list of BackupRecoveryPoint for a backedup item.
+The cmdlet Get-AzureBackupRecoveryPoint collects a list of BackupRecoveryPoint for a backed up item.
 By default all BackupRecoveryPoints of the last week will be returned but the start of the date range can be specified.
 
 Return all BackupRecoveryPoint for a backup items.
@@ -94,7 +103,7 @@ The cmdlet sets the backup protection policy for an instance.
 `Set-AzureBackupProtectionPolicy -ResourceGroupName 'RG' -RecoveryServicesVault 'VAULT' -VM 'VM1' -sourceprofile Name -targetprofile Name -instance InstanceName`
 
 ### Start-AzureBackupDatabase
-Start backup for a database on SQL instance. You can select the requiered backup type. 
+Start backup for a database on SQL instance. You can select the required backup type. 
 It can be used to do an initial backup after you enabled backup protection or start a backup after a scheduled backup fails.
 
 Start a full backup for a database 'test'.
@@ -108,4 +117,3 @@ It can be used to do an initial backup after you enabled backup protection.
 Start the initial backup of all databases where it is pending.
 
 `Start-AzureBackupInitialFull -ResourceGroupName Value -RecoveryServicesVault Value -VM Server`
-
